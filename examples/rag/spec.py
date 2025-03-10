@@ -94,6 +94,5 @@ def RagWorkflow(
     # Add edges
     builder.add_edge("retrieve", "generate")
     builder.add_edge("generate", END)
-
     builder.set_entry_point("retrieve")
     return builder

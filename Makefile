@@ -32,6 +32,7 @@ lint lint_diff:
 
 format format_diff:
 	[ "$(PYTHON_FILES)" = "" ] || uv run ruff format $(PYTHON_FILES)
+	[ "$(PYTHON_FILES)" = "" ] || uv run ruff check --fix $(PYTHON_FILES)
 
 
 generate_examples:
@@ -39,6 +40,13 @@ generate_examples:
 	uv run langgraph-gen examples/agentic_rag/spec.yml --language typescript
 	uv run langgraph-gen examples/rag/spec.yml --language python
 	uv run langgraph-gen examples/rag/spec.yml --language typescript
+
+
+test_examples:
+	uv run langgraph-gen tests/integrations/sample_01.yml --language python
+	uv run langgraph-gen tests/integrations/sample_01.yml --language typescript
+	uv run langgraph-gen tests/integrations/sample_02.yml --language python
+	uv run langgraph-gen tests/integrations/sample_02.yml --language typescript
 	
 
 ######################
